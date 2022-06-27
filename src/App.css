@@ -1,0 +1,42 @@
+:root {
+    --primary: #d71e5b;
+    --secondary: #84dd9e;
+    --light: #eee;
+    --light-alt: #efe;
+    --dark: #131a25;
+    --dark-alt: #27292c;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar {
+    background-color: var(--dark-alt);
+    display: flex;
+    justify-items: center;
+    padding: 20px;
+    justify-content: space-between;
+    height: 65px;
+}
+
+.nav-item {
+    color: var(--light);
+    font-size: 18px;
+    display: flex;
+    gap: 1.5rem;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+
+
+.logo {
+    color: var(--light);
+    font-size: 20px;
+    font-weight: 800;
+}
