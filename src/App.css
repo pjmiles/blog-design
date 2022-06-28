@@ -11,11 +11,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
 }
 
 .container{
     height: 100vh;
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
 }
 
 .nav-bar {
@@ -104,4 +105,32 @@ a:link{
 .submit-btn:hover {
     background-color: var(--primary);
     cursor: pointer;
+}
+
+/* for blog content */
+.blog-container {
+    background-color: var(--secondary);
+    margin: auto 50px;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.blog-header-text {
+    text-align: center;
+    font-weight: 600;
+}
+
+.blog-title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.blog-content {
+    background-color: var(--light-alt);
+    font-size: 18px;
+    padding: 10px 5px;
+}
+.blog-author {
+    text-align: center;
+    font-weight: 700;
 }
