@@ -11,6 +11,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+.container{
+    height: 100vh;
+    /* background-color: var(--secondary); */
 }
 
 .nav-bar {
@@ -33,10 +39,98 @@ a:link{
     text-decoration: none;
 }
 
-
-
 .logo {
     color: var(--light);
     font-size: 20px;
     font-weight: 800;
+}
+
+.form-section {
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-heading {
+    text-align: center;
+    font-size: 30px;
+    color: var(--dark);
+    margin-top: 5px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--dark);
+    margin: auto;
+}
+
+.form-container label {
+    font-weight: 500;
+    color: var(--light-alt);
+    margin: 5px;
+}
+
+.form-container .form-input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-container .form-input-content{
+    width: 100%;
+    border-radius: 5px;
+    resize: none;
+    padding: 12px;
+    height: 300px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px;
+    background-color: var(--secondary);
+}
+
+.submit-btn:hover {
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
+/* for blog content */
+.blog-container {
+    background-color: var(--secondary);
+    margin: auto 50px;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.blog-header-text {
+    text-align: center;
+    font-weight: 600;
+}
+
+.blog-title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.blog-content {
+    background-color: var(--light-alt);
+    font-size: 18px;
+    padding: 10px 5px;
+}
+.blog-author {
+    text-align: center;
+    font-weight: 700;
 }

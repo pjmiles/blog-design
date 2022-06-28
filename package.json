@@ -23,7 +23,9 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "plugins": ["prettier"],
+    "parser": "react-scripts/node_modules/babel-eslint"
   },
   "browserslist": {
     "production": [
