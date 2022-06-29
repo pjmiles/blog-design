@@ -44,6 +44,7 @@
     font-weight: 800;
 }
 
+/* for form section */
 .form-section {
     background-color: var(--light);
     display: flex;
@@ -123,6 +124,8 @@
 .blog-title {
     font-size: 16px;
     font-weight: 800;
+    text-align: center;
+    padding: 10px;
 }
 
 .blog-card{
@@ -137,9 +140,39 @@
 .blog-content {
     background-color: var(--light-alt);
     font-size: 18px;
-    padding: 10px 5px;
+    padding: 10px 15px;
 }
 .blog-author {
-    text-align: center;
     font-weight: 700;
+    padding: 15px;
+}
+
+/* for comment */
+.comment-btn {
+    border-radius: 10px;
+    padding: 5px 5px;
+    margin: 12px;
+}
+.comment-btn:hover {
+    color: var(--secondary);
+    transition: 0.5s;
+}
+
+.active{
+    display: block;
+}
+.not-active{
+    display: none;
+}
+
+.post-comment {
+    width: 100%;
+    border-radius: 5px;
+    resize: none;
+    padding: 0px 2px;
+}
+.post-btn {
+    padding: 5px;
+    margin: 2px;
+    font-weight: 600;
 }
