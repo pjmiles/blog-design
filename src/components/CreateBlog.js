@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const BASE_URL = 'https://blogpostapi1.herokuapp.com/'
 
-const CreatePost = () => {
+const CreateBlog = () => {
   const [newBlog, setNewBlog] = useState({ title: "", content: "", name: "" })
   let navigate = useNavigate();
 
@@ -77,4 +77,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreateBlog;
