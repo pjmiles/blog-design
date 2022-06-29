@@ -3,26 +3,41 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "./CreateBlog";
 import Comments from "./Comment";
 
+
 const getComment_url = BASE_URL + "comment/all_comments/";
+const postComment_url = BASE_URL + "comment";
 
 const Blogs = () => {
-  const [comments, setComments] = useState([]);
-  const [blogs, setBlogs] = useState([]);
-  const [selectPost, setSelectPost] = useState("");
+  const [comments, setComments] = useState([]); //comment state
+  const [blogs, setBlogs] = useState([]);        // blog state
+  const [selectPost, setSelectPost] = useState(""); // selecting a particular blog post
+  const [content, setContent] = useState(""); // state for content of the comment
+
+  // get comment from the api
+  const getComments = async (id) => {
+    try {
+      const { data } = await Axios.get(getComment_url + id);
+      console.log(data.data);
+      setComments(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleClick = (id) => {
-    setSelectPost(id);
+    setSelectPost(id);  // to select a particular post with an id
 
-    const getComments = async () => {
-      try {
-        const { data } = await Axios.get(getComment_url + id);
-        console.log(data.data);
-        setComments(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getComments();
+    getComments(id); // on click it add the comment to the post
+  };
+  const handleSubmit = async (e, id) => {
+    e.preventDefault();
+    try {
+      await Axios.post(postComment_url, { content, post: id });
+    } catch (error) {
+      console.log(error);
+    }
+    setContent("");
+    getComments(id);
   };
 
   useEffect(() => {
@@ -55,6 +70,17 @@ const Blogs = () => {
               } `}
             >
               <Comments comments={comments} />
+              <form onSubmit={(e) => handleSubmit(e, blog.id)}>
+                <textarea
+                  cols="20"
+                  rows="3"
+                  className="post-comment"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  required
+                ></textarea>
+                <button className="post-btn">Post</button>
+              </form>
             </div>
           </>
         );

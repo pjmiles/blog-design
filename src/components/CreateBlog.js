@@ -1,28 +1,32 @@
 import { useState } from "react";
-import Axios from 'axios';
+import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const BASE_URL = 'https://blogpostapi1.herokuapp.com/'
+export const BASE_URL = "https://blogpostapi1.herokuapp.com/";
 
 const CreateBlog = () => {
-  const [newBlog, setNewBlog] = useState({ title: "", content: "", name: "" })
+  const [newBlog, setNewBlog] = useState({ title: "", content: "", name: "" });
   let navigate = useNavigate();
 
-  const getBlogDetails = ((event) =>{
-    setNewBlog(current => ({...current, [event.target.name]: event.target.value}))
-  })
+  const getBlogDetails = (event) => {
+    setNewBlog((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
   // sumbit blog post func
-  const submitBlogPost = (async() =>{
+  const submitBlogPost = async (e) => {
     try {
-      const result = await Axios.post(BASE_URL, newBlog)
-      if(result?.status === 200){
-        return navigate("/", {replace: true});
+      e.preventDefault();
+      const result = await Axios.post(BASE_URL, newBlog);
+      if (result?.status === 200) {
+        return navigate("/", { replace: true });
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  })
+  };
 
   return (
     <div className="form-section">
@@ -40,7 +44,7 @@ const CreateBlog = () => {
               value={newBlog.title}
               placeholder="title"
               onChange={getBlogDetails}
-            
+              required
             ></input>
           </div>
           <div className="form-control">
@@ -53,7 +57,7 @@ const CreateBlog = () => {
               value={newBlog.content}
               placeholder="content"
               onChange={getBlogDetails}
-            
+              required
             ></textarea>
           </div>
           <div className="form-control">
@@ -66,11 +70,16 @@ const CreateBlog = () => {
               value={newBlog.name}
               placeholder="name"
               onChange={getBlogDetails}
-          
+              required
             ></input>
           </div>
 
-          <input className="submit-btn" type="submit" onClick={submitBlogPost} required></input>
+          <input
+            className="submit-btn"
+            type="submit"
+            onClick={(e) => submitBlogPost}
+            required
+          ></input>
         </form>
       </div>
     </div>
