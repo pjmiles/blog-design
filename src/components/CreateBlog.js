@@ -9,16 +9,13 @@ const CreateBlog = () => {
   let navigate = useNavigate();
 
   const getBlogDetails = (event) => {
-    setNewBlog((current) => ({
-      ...current,
-      [event.target.name]: event.target.value,
-    }));
+    setNewBlog((current) => ({...current, [event.target.name]: event.target.value, }));
   };
 
   // sumbit blog post func
   const submitBlogPost = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const result = await Axios.post(BASE_URL, newBlog);
       if (result?.status === 200) {
         return navigate("/", { replace: true });
