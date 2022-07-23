@@ -8,18 +8,19 @@ const CreateBlog = () => {
   const [newBlog, setNewBlog] = useState({ title: "", content: "", name: "" });
   let navigate = useNavigate();
 
-  const getBlogDetails = (event) => {
-    setNewBlog((current) => ({...current, [event.target.name]: event.target.value, }));
+  const handleChange = (event) => {
+    setNewBlog((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   // sumbit blog post func
-  const submitBlogPost = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await Axios.post(BASE_URL, newBlog);
-      if (result?.status === 200) {
-        return navigate("/", { replace: true });
-      }
+      await Axios.post(BASE_URL, newBlog);
+      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -27,12 +28,12 @@ const CreateBlog = () => {
 
   return (
     <div className="form-section">
-      <h3 className="form-heading">Create Blog</h3>
+      <h1 className="form-heading">Create Blog</h1>
 
       <div className="form-container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-control">
-            <label htmlFor="title">Blog Title</label>
+            <label htmlFor="title" />
             <input
               className="form-input"
               type="text"
@@ -40,12 +41,12 @@ const CreateBlog = () => {
               name="title"
               value={newBlog.title}
               placeholder="title"
-              onChange={getBlogDetails}
+              onChange={handleChange}
               required
             ></input>
           </div>
           <div className="form-control">
-            <label htmlFor="content">Blog Content</label>
+            <label htmlFor="content" />
             <textarea
               className="form-input-content"
               type="text"
@@ -53,30 +54,26 @@ const CreateBlog = () => {
               name="content"
               value={newBlog.content}
               placeholder="content"
-              onChange={getBlogDetails}
+              onChange={handleChange}
               required
             ></textarea>
           </div>
           <div className="form-control">
-            <label htmlFor="author">Author</label>
+            <label htmlFor="author" />
             <input
               className="form-input"
               type="text"
-              id="author"
+              id="name"
               name="name"
               value={newBlog.name}
               placeholder="name"
-              onChange={getBlogDetails}
+              onChange={handleChange}
               required
             ></input>
           </div>
-
-          <input
-            className="submit-btn"
-            type="submit"
-            onClick={(e) => submitBlogPost}
-            required
-          ></input>
+          <div className="form-submit-container">
+            <button className="submit-btn" required>Submit</button>
+          </div>
         </form>
       </div>
     </div>

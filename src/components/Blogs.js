@@ -17,24 +17,23 @@ const Blogs = () => {
   const getComments = async (id) => {
     try {
       const { data } = await Axios.get(getComment_url + id);
-      console.log(data.data);
       setComments(data.data);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      console.log("Error getting comment");
     }
   };
 
   const handleClick = (id) => {
     setSelectPost(id);  // to select a particular post with an id
-
     getComments(id); // on click it add the comment to the post
   };
+
   const handleSubmit = async (e, id) => {
     e.preventDefault();
     try {
       await Axios.post(postComment_url, { content, post: id });
-    } catch (error) {
-      console.log(error);
+    } catch{
+      console.log("Error posting comment");
     }
     setContent("");
     getComments(id);
