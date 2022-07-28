@@ -34,7 +34,7 @@
 }
 
 .nav-item a:hover {
-    color: #d71e5b;
+    color: var(--primary);
     transition: 0.3s;
 }
 
@@ -60,17 +60,10 @@
 }
 
 .form-container {
-    width: 100%;
-    max-width: 50rem;
+    width: 70%;
     padding: 20px;
     background-color: var(--dark);
     margin: auto;
-}
-
-.form-container label {
-    font-weight: 500;
-    color: var(--light-alt);
-    margin: 5px;
 }
 
 .form-container .form-input {
@@ -88,11 +81,16 @@
     padding: 12px;
     height: 300px;
     font-size: 16px;
+    margin-top: 2px;
+}
+
+.form-submit-container {
+    text-align: center;
 }
 
 .submit-btn {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
     border-radius: 2px;
     font-size: 1rem;
     font-weight: 500;
@@ -107,13 +105,13 @@
 
 /* for blog content */
 .blog-container {
-    background-color: var(--light-alt);
     margin: auto;
     padding: 20px 30px;
     width: 100%;
     max-width: 40rem;
     border-radius: 10px;
-    border: 2px #d71e5b;
+    border: 2px var(--primary);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .blog-header-text {
@@ -126,6 +124,7 @@
     font-weight: 800;
     text-align: center;
     padding: 10px;
+    color: var(--primary);
 }
 
 .blog-card{
